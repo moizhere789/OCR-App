@@ -27,6 +27,8 @@ const CameraScreen = () => {
   const takePicture = async () => {
     let result = await ImagePicker.launchCameraAsync({
       allowsEditing: false,
+      aspect:[1,1],
+      // presentationStyle:,
       quality: 1,
     });
 
@@ -40,6 +42,7 @@ const CameraScreen = () => {
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: false,
       quality: 1,
+      aspect: [7,8]
     });
 
     if (!result.canceled) {
@@ -49,10 +52,8 @@ const CameraScreen = () => {
 
   return (
     <View style={styles.container}>
-      <CameraView style={{width:'100%',height:'100%'}}>
       <Button title="Take Picture" onPress={takePicture} />
       <Button title="Pick from Gallery" onPress={pickImage} />
-      </CameraView>
     </View>
   );
 };
@@ -66,3 +67,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+

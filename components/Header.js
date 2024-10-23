@@ -11,7 +11,8 @@ const Header = ({
   right,
   cancle,
   done,
-  closeX
+  closeX,
+  close
 }) => {
 
   return (
@@ -26,7 +27,7 @@ const Header = ({
       )}
       {rotateleft && rotateright && (
         <View style={styles.cropHeaderContainer}>
-          <TouchableOpacity onPress={cancle}>
+          <TouchableOpacity onPress={close}>
             <Text style={styles.cancleText}>Cancle</Text>
           </TouchableOpacity>
 
@@ -51,7 +52,7 @@ const Header = ({
       
       <View style={styles.extractTextHeaderContainer}>
       <Text style={styles.extractTextHeaderText}>Your Extracted Text</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={close}>
         <Feather name={closeX} size={30} color="#fff" />
       </TouchableOpacity>
     </View>

@@ -13,6 +13,14 @@
       "permissions": [
         "CAMERA",
         "MEDIA_LIBRARY"
+      ],
+      "plugins": [
+        [
+          "react-native-vision-camera",
+          {
+            "cameraPermissionText": "$(PRODUCT_NAME) needs access to your Camera."
+          }
+        ]
       ]
     },
     "ios": {
@@ -26,6 +34,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "react-native-vision-camera"
+    ]
   }
 }

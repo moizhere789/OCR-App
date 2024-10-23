@@ -4,10 +4,10 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import * as ImageManipulator from 'expo-image-manipulator';
 import Header from '../components/Header';
 
-const CropScreen = () => {
+const CropScreen = ({navigation}) => {
     const route = useRoute();
     const { imageUri } = route.params; // Get image URI from CameraScreen
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
     const [loading, setLoading] = useState(false);
 
     const cropImage = async () => {
@@ -38,7 +38,7 @@ const CropScreen = () => {
 
     return (
         <>
-        <Header rotateleft={'rotate-ccw'} rotateright={'rotate-cw'} done={cropImage}/>
+        <Header rotateleft={'rotate-ccw'} rotateright={'rotate-cw'} done={cropImage} close={()=>navigation?.navigate('CameraScreen')}/>
         <View style={styles.container}>
             <Image source={{ uri: imageUri }} style={styles.image} />
 
