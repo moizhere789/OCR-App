@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR</title>
+    <script src="https://cdn.rawgit.com/napolitano/tesseract.js/0.4.1/dist/tesseract.js"></script>
+</head>
+<body>
+    <script>
+        window.handleOCR = function (imageUri) {
+            console.log("Image URI received:", imageUri); // Debugging log
+            Tesseract.recognize(
+                imageUri,
+                'eng',
+                {
+                    logger: (m) => console.log(m), // Log progress
+                }
+            ).then(({ data: { text } }) => {
+                console.log("Extracted text:", text); // Debugging log
+                window.ReactNativeWebView.postMessage(text);
+            }).catch(err => {
+                console.error('Error:', err); // Log any errors
+                window.ReactNativeWebView.postMessage('Error: ' + err.message);
+            });
+        };
+    </script>
+</body>
+</html>
